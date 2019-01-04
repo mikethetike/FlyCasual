@@ -34,8 +34,9 @@ namespace Ship
         public bool CanBonusAttack { get; set; }
 
         // EVENTS
-
+        public event EventHandlerShip OnPlanningPhaseStart;
         public event EventHandlerShip OnSystemsPhaseStart;
+
 
         public event EventHandlerShip OnActivationPhaseStart;
         public event EventHandlerShip OnActionSubPhaseStart;
@@ -152,6 +153,10 @@ namespace Ship
         public void CallOnActivationPhaseStart()
         {
             if (OnActivationPhaseStart != null) OnActivationPhaseStart(this);
+        }
+        public void CallOnPlanningPhaseStart()
+        {
+            if (OnPlanningPhaseStart != null) OnPlanningPhaseStart(this);
         }
 
         public void CallOnSystemsPhaseStart()

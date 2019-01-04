@@ -78,6 +78,10 @@ public class PhaseEvents
     public void CallPlanningPhaseTrigger(Action callback)
     {
         if (OnPlanningPhaseStart != null) OnPlanningPhaseStart();
+        foreach (var shipHolder in Roster.AllShips)
+        {
+            shipHolder.Value.CallOnPlanningPhaseStart();
+        }
 
         Triggers.ResolveTriggers(TriggerTypes.OnPlanningSubPhaseStart, callback);
     }
